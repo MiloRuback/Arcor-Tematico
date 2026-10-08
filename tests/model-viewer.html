@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARCOR • Validação do modelo 3D</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#e4e9ee;color:#20303e;font:14px system-ui,sans-serif}canvas{display:block;width:100%;height:100%}header{position:absolute;top:24px;left:28px;pointer-events:none}h1{font-size:23px;letter-spacing:-.6px;margin:6px 0}header small{font-size:11px;letter-spacing:2px}p{margin:7px 0;color:#526476}nav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:7px;padding:9px;background:#ffffffdf;border:1px solid #fff;border-radius:14px;box-shadow:0 5px 25px #20303e18}button,a{border:0;background:#edf1f5;padding:11px 16px;border-radius:8px;color:#24384a;font:inherit;cursor:pointer;text-decoration:none;white-space:nowrap}button:hover,a:hover{background:#dbe6ef}#status{position:absolute;right:26px;top:30px;max-width:38%;text-align:right;color:#526476;font-size:12px}.note{position:absolute;bottom:96px;left:0;width:100%;text-align:center;pointer-events:none;color:#526476;font-size:12px}@media(max-width:700px){nav{width:96%;flex-wrap:wrap;justify-content:center;bottom:10px}button,a{padding:8px 10px}header{left:16px;top:15px}h1{font-size:18px}#status{top:100px;max-width:90%;left:16px;text-align:left}.note{bottom:116px}}
+</style>
+<header><small>ARCOR / ESTUDO CENOGRÁFICO</small><h1>Três experiências. Uma vila doce.</h1><p>7 Belo · Paçoca do Amor · Poosh!</p></header>
+<div id="status" role="status">Carregando geometria e texturas…</div>
+<div class="note">Arraste para girar · Role para aproximar · Botão direito para deslocar</div>
+<nav aria-label="Controles do modelo"><button data-view="all">Conjunto</button><button data-view="sete">7 Belo</button><button data-view="pacoca">Paçoca</button><button data-view="poosh">Poosh!</button><button id="rotate" aria-pressed="false">Girar</button><a href="../assets/models/exposicao-shopping.glb" download>Baixar GLB</a></nav>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from './vendor/GLTFLoader.js';
+import {OrbitControls} from './vendor/OrbitControls.js';
+const scene=new THREE.Scene();scene.background=new THREE.Color('#e4e9ee');
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;document.body.append(renderer.domElement);
+const camera=new THREE.PerspectiveCamera(39,innerWidth/innerHeight,.05,140);const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=2;controls.maxDistance=48;controls.maxPolarAngle=Math.PI*.495;controls.autoRotateSpeed=.65;
+scene.add(new THREE.HemisphereLight(0xe5f5ff,0x85705d,1.5));
+function light(color,intensity,pos){const l=new THREE.DirectionalLight(color,intensity);l.position.set(...pos);scene.add(l);return l;}
+const key=light(0xfff1d4,2.5,[-3,14,10]);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-15,right:15,top:10,bottom:-10,near:1,far:40});key.shadow.normalBias=.035;key.shadow.bias=-.0001;light(0xb8dfff,1.2,[8,7,-6]);light(0xffffff,1.0,[-12,4,2]);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0xe4e9ee,roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.315;ground.receiveShadow=true;scene.add(ground);
+const views={all:{pos:[8,10,34],target:[0,1.65,0]},sete:{pos:[-2.6,5.2,11.5],target:[-6.8,1.65,0]},pacoca:{pos:[4.8,5.0,12.0],target:[0,1.95,0]},poosh:{pos:[3.0,5.2,11.3],target:[6.8,1.7,-.2]}};
+function view(id){const v=views[id];camera.position.set(...v.pos);controls.target.set(...v.target);controls.update();}view('all');
+for(const b of document.querySelectorAll('[data-view]'))b.onclick=()=>view(b.dataset.view);
+document.querySelector('#rotate').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.target.setAttribute('aria-pressed',controls.autoRotate);e.target.textContent=controls.autoRotate?'Pausar':'Girar';};
+const status=document.querySelector('#status');window.modelTest={loaded:false,errors:[]};
+new GLTFLoader().load('../assets/models/exposicao-shopping.glb',gltf=>{let meshes=0,triangles=0;gltf.scene.traverse(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count??o.geometry.attributes.position.count)/3;o.castShadow=o.material.transparent!==true;o.receiveShadow=true;}});scene.add(gltf.scene);window.modelTest={loaded:true,meshes,triangles,bounds:new THREE.Box3().setFromObject(gltf.scene),errors:[]};status.textContent=`GLB carregado · ${meshes} malhas · ${Math.round(triangles).toLocaleString('pt-BR')} triângulos`;},undefined,e=>{status.textContent='Falha ao carregar. Abra esta página por um servidor HTTP local.';window.modelTest.errors.push(String(e));console.error(e);});
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
+window.modelView=view;
+</script>
+</html>
+
+

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a1a">
+<meta name="description" content="Maquete 3D interativa do parque temático ARCOR — Vila Doce de Natal. Explore os 3 estandes em um espaço de 200m².">
+<title>ARCOR — Maquete 3D · Vila Doce de Natal · 200m²</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"../assets/vendor/three.module.js"}}</script>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading-screen" class="loading-screen">
+  <div class="loading-inner">
+    <div class="loading-logo">ARCOR<span>✳</span></div>
+    <p class="loading-subtitle">Maquete 3D · Vila Doce de Natal</p>
+    <div class="loading-bar-container">
+      <div class="loading-bar" id="loading-bar"></div>
+    </div>
+    <p class="loading-text" id="loading-text">Preparando experiência…</p>
+  </div>
+</div>
+
+<!-- Main UI -->
+<div id="app" class="app hidden">
+  <!-- Header -->
+  <header class="header" id="site-header">
+    <div class="header-left">
+      <span class="logo">arcor<span>✳</span></span>
+      <span class="header-divider"></span>
+      <span class="header-label">MAQUETE 3D · 200m²</span>
+    </div>
+    <nav class="header-nav" id="main-nav">
+      <button class="nav-btn active" data-view="all" id="btn-overview">Vista Geral</button>
+      <button class="nav-btn" data-view="pacoca" id="btn-pacoca">Paçoca do Amor</button>
+      <button class="nav-btn" data-view="sete" id="btn-sete-belo">7 Belo</button>
+      <button class="nav-btn" data-view="poosh" id="btn-poosh">Poosh!</button>
+    </nav>
+    <div class="header-right">
+      <button class="icon-btn" id="btn-rotate" aria-label="Auto-rotação" title="Auto-rotação">⟳</button>
+      <button class="icon-btn active" id="btn-grid" aria-label="Mostrar grade" title="Grade">⊞</button>
+      <button class="icon-btn active" id="btn-labels" aria-label="Mostrar etiquetas" title="Etiquetas">🏷</button>
+      <button class="icon-btn" id="btn-measure" aria-label="Mostrar medidas" title="Medidas">📏</button>
+    </div>
+  </header>
+
+  <!-- 3D Canvas -->
+  <div id="canvas-container" class="canvas-container"></div>
+
+  <!-- Overlay labels container -->
+  <div id="labels-overlay" class="labels-overlay"></div>
+
+  <!-- Info Panel -->
+  <div id="info-panel" class="info-panel hidden" data-brand="">
+    <button class="info-close" id="info-close" aria-label="Fechar painel">✕</button>
+    <div class="info-content" id="info-content"></div>
+  </div>
+
+  <!-- Bottom HUD -->
+  <div class="hud-bottom">
+    <div class="hud-left">
+      <span class="hud-badge"><span class="dot green"></span> INTERATIVO</span>
+      <span class="hud-info" id="hud-dimensions">20m × 10m · 200m²</span>
+    </div>
+    <div class="hud-center">
+      <span class="hud-hint">Arraste para girar · Scroll para zoom · Clique em um estande</span>
+    </div>
+    <div class="hud-right">
+      <button class="zoom-btn" id="zoom-in" aria-label="Aproximar">+</button>
+      <button class="zoom-btn" id="zoom-out" aria-label="Afastar">−</button>
+      <button class="zoom-btn" id="zoom-reset" aria-label="Resetar vista">↺</button>
+    </div>
+  </div>
+
+  <!-- Scale indicator -->
+  <div class="scale-indicator">
+    <div class="scale-bar"></div>
+    <span>5m</span>
+  </div>
+</div>
+
+<script type="module" src="maquete.js"></script>
+</body>
+</html>

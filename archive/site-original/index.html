@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto ARCO | Experiência Imersiva</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <!-- Ícones (BoxIcons) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Model Viewer Component (Para suportar arquivos GLB/GLTF nativamente) -->
+    <!-- Documentação: https://modelviewer.dev/ -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <!-- ==================================================
+         CABEÇALHO E NAVEGAÇÃO
+    ================================================== -->
+    <header>
+        <div class="logo">ARCO</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#conceito">O Conceito</a></li>
+                <li><a href="#projeto">O Projeto</a></li>
+                <li><a href="#modelo3d">Explorar 3D</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==================================================
+         SEÇÃO: HERO
+    ================================================== -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="container hero-content">
+            <h1>ARCO</h1>
+            <p class="subtitle">"Uma experiência que transforma a identidade da Paçoquinha em um espaço."</p>
+            
+            <div class="hero-buttons">
+                <a href="#conceito" class="btn btn-primary">Conheça o Projeto</a>
+                <!-- Botão com ID específico interceptado pelo viewer3d.js -->
+                <a href="#modelo3d" id="btn-explore-3d-action" class="btn btn-secondary">Explorar em 3D</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================
+         SEÇÃO: O CONCEITO
+    ================================================== -->
+    <section id="conceito" class="conceito">
+        <div class="container grid-2">
+            <div class="conceito-texto reveal">
+                <h2>O Conceito</h2>
+                <p>O projeto <strong>ARCO</strong> propõe uma experiência temática inspirada na essência da Paçoquinha. Muito além de um simples espaço, criamos um ambiente imersivo que combina elementos naturais e arquitetura inovadora.</p>
+                <p>Nossa proposta é transformar uma identidade de marca reconhecida em um espaço físico tangível e interativo, onde cada elemento conta uma parte da história.</p>
+                
+                <div class="conceito-tags">
+                    <span class="tag">Praia</span>
+                    <span class="tag">Areia Temática</span>
+                    <span class="tag">Água</span>
+                    <span class="tag">Natureza</span>
+                    <span class="tag">Coqueiros</span>
+                    <span class="tag">Arquitetura</span>
+                </div>
+            </div>
+            
+            <!-- Espaço reservado para imagens reais -->
+            <div class="conceito-img reveal">
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #e0e0e0; color: #888;">
+                    <i class='bx bx-image-alt' style="font-size: 3rem; margin-right: 10px;"></i>
+                    <span>Imagem do Ambiente/Praia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================
+         SEÇÃO: A CASCATA CENTRAL
+    ================================================== -->
+    <section id="cascata" class="cascata">
+        <div class="container cascata-destaque reveal">
+            <h2>A água ganha forma</h2>
+            <p>O coração do projeto ARCO. No centro da experiência, uma grandiosa cascata não é apenas um elemento decorativo, mas um espetáculo visual.</p>
+            <p><strong>A forma do nosso mascote não é definida por uma estátua sólida, mas sim pelo próprio movimento, volume e fluxo contínuo da água.</strong></p>
+        </div>
+        
+        <div class="container">
+            <div class="cascata-visual reveal">
+                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6);">
+                    <i class='bx bx-water' style="font-size: 3rem; margin-right: 10px;"></i>
+                    <span>Visualização da Cascata (Placeholder)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================
+         SEÇÃO: A PRAIA
+    ================================================== -->
+    <section class="praia">
+        <div class="container grid-2">
+            <!-- Espaço reservado para imagens reais -->
+            <div class="praia-img reveal">
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f0e6d2; color: #a89f91;">
+                    <i class='bx bx-landscape' style="font-size: 3rem; margin-right: 10px;"></i>
+                    <span>Imagem da Areia Temática/Coqueiros</span>
+                </div>
+            </div>
+            
+            <div class="praia-texto reveal">
+                <h2>A Experiência Tropical</h2>
+                <p>Uma praia desenhada nos mínimos detalhes. A areia temática evoca a textura e a cor da Paçoquinha, conectando a natureza ao sabor que todos conhecem.</p>
+                <p>Rodeada por coqueiros exuberantes e vegetação tropical, a praia oferece um ambiente de relaxamento e contemplação antes da chegada à grande cascata central.</p>
+                <a href="#projeto" class="btn btn-outline-dark" style="margin-top: 1rem;">Ver Dimensões</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================
+         SEÇÃO: O PROJETO (DADOS TÉCNICOS)
+    ================================================== -->
+    <section id="projeto" class="projeto">
+        <div class="container reveal">
+            <h2>Dimensões do Espaço</h2>
+            <p>Arquitetura projetada para fluxo inteligente e ampla visualização.</p>
+            
+            <div class="projeto-cards">
+                <div class="card">
+                    <h3>20<span style="font-size:1.5rem">m</span></h3>
+                    <p>Largura</p>
+                </div>
+                <div class="card">
+                    <h3>30<span style="font-size:1.5rem">m</span></h3>
+                    <p>Comprimento</p>
+                </div>
+                <div class="card">
+                    <i class='bx bx-water' style="font-size: 3rem; color: var(--color-water);"></i>
+                    <p style="margin-top: 1rem;">Cascata Central</p>
+                </div>
+                <div class="card">
+                    <i class='bx bx-sun' style="font-size: 3rem; color: var(--color-pacoca);"></i>
+                    <p style="margin-top: 1rem;">Praia Temática</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================
+         SEÇÃO: EXPERIÊNCIA DO VISITANTE (TIMELINE)
+    ================================================== -->
+    <section class="experiencia">
+        <div class="container reveal">
+            <h2>Percurso do Visitante</h2>
+            <p>Uma jornada projetada passo a passo.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">Entrada Principal</div>
+                <i class='bx bx-down-arrow-alt timeline-arrow'></i>
+                
+                <div class="timeline-item">Praia Temática</div>
+                <i class='bx bx-down-arrow-alt timeline-arrow'></i>
+                
+                <div class="timeline-item">Trilha dos Coqueiros</div>
+                <i class='bx bx-down-arrow-alt timeline-arrow'></i>
+                
+                <div class="timeline-item">Visualização da Cascata Central</div>
+                <i class='bx bx-down-arrow-alt timeline-arrow'></i>
+                
+                <div class="timeline-item">Contemplação no Lago</div>
+                <i class='bx bx-down-arrow-alt timeline-arrow'></i>
+                
+                <div class="timeline-item" style="background: var(--color-pacoca); color: white;">A Experiência ARCO Completa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================
+         SEÇÃO: EXPLORE O ARCO EM 3D
+         * Estrutura preparada para receber arquivos GLB/GLTF via viewer3d.js
+    ================================================== -->
+    <section id="modelo3d" class="modelo-3d-section">
+        <div class="container reveal">
+            <h2>Explore o ARCO em 3D</h2>
+            <p>Interaja com o modelo volumétrico do projeto. Gire, aproxime e visualize todos os ângulos.</p>
+            
+            <div class="viewer-wrapper" id="viewer-container">
+                
+                <!-- Status Overlay (Controlado pelo viewer3d.js) -->
+                <!-- Mostra 'Em preparação' ou 'Carregando' dependendo do estado -->
+                <div class="viewer-status" id="viewer-status-overlay">
+                    <i class='bx bx-cube-alt' style="font-size: 4rem; margin-bottom: 1rem; color: var(--color-pacoca);"></i>
+                    <h3 id="viewer-status-title">MODELO 3D EM PREPARAÇÃO</h3>
+                    <p id="viewer-status-desc">A visualização volumétrica do projeto estará disponível nesta área futuramente.</p>
+                    
+                    <!-- Botão para tentar carregar (útil para desenvolvimento) -->
+                    <button class="btn btn-primary" onclick="attemptToLoadModel('./models/parque-arco.glb')" style="margin-top: 1.5rem; display: none;" id="btn-force-load">
+                        Tentar Carregar
+                    </button>
+                </div>
+
+                <!-- Web Component de Visualização 3D -->
+                <!-- O atributo src será injetado pelo JavaScript (viewer3d.js) quando acionado -->
+                <model-viewer 
+                    id="arco-model-viewer"
+                    alt="Modelo 3D do Projeto ARCO"
+                    camera-controls
+                    auto-rotate
+                    shadow-intensity="1"
+                    environment-image="neutral"
+                    exposure="1"
+                    style="display: none;">
+                </model-viewer>
+
+                <!-- Controles sobrepostos ao visualizador -->
+                <div class="viewer-controls-overlay">
+                    <button class="viewer-btn" id="btn-autorotate" title="Pausar/Iniciar Rotação"><i class='bx bx-refresh'></i></button>
+                    <button class="viewer-btn" id="btn-reset" title="Resetar Câmera"><i class='bx bx-target-lock'></i></button>
+                    <button class="viewer-btn" id="btn-fullscreen" title="Tela Cheia"><i class='bx bx-fullscreen'></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================
+         RODAPÉ
+    ================================================== -->
+    <footer>
+        <div class="container">
+            <div class="logo">ARCO</div>
+            <p>© 2024 Projeto ARCO - Experiência Paçoquinha.</p>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 1rem;">Arquitetura preparada para receber modelos volumétricos (GLB/GLTF).</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="./js/viewer3d.js"></script>
+</body>
+</html>

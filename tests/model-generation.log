@@ -1,0 +1,129 @@
+{
+  "file": "assets/models/exposicao-shopping.glb",
+  "bytes": 12873728,
+  "megabytes": 12.874,
+  "mesh_nodes": 75,
+  "triangles": 338602,
+  "materials": 36,
+  "textures": [
+    {
+      "name": "madeira-carvalho",
+      "resolution": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "madeira-normal",
+      "resolution": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "amendoim-torrado",
+      "resolution": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "amendoim-normal",
+      "resolution": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "gelo-fissuras",
+      "resolution": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "piso-mineral",
+      "resolution": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "assinatura",
+      "resolution": [
+        1024,
+        256
+      ]
+    },
+    {
+      "name": "pacoca-letreiro",
+      "resolution": [
+        1024,
+        256
+      ]
+    },
+    {
+      "name": "sete-belo-letreiro",
+      "resolution": [
+        1024,
+        256
+      ]
+    },
+    {
+      "name": "poosh-letreiro",
+      "resolution": [
+        1024,
+        256
+      ]
+    },
+    {
+      "name": "poosh-quarto",
+      "resolution": [
+        1024,
+        256
+      ]
+    },
+    {
+      "name": "tela-poosh",
+      "resolution": [
+        256,
+        128
+      ]
+    }
+  ],
+  "modeled_parts_before_batching": 2760,
+  "semantic_groups": {
+    "Floor": 23,
+    "Entrance": 16,
+    "Environment": 8,
+    "Pacoca_Structure": 19,
+    "Pacoca_Lights": 7,
+    "Heart": 1613,
+    "Pacoca_Landscape": 40,
+    "Counters": 96,
+    "Pacoca_Props": 184,
+    "SeteBelo_Structure": 28,
+    "SeteBelo_Lights": 5,
+    "CandyProps": 530,
+    "Mascot": 33,
+    "IceElements": 5,
+    "Room": 7,
+    "Neon": 22,
+    "Poosh_Props": 123,
+    "Poosh_Lights": 1
+  },
+  "bounds_m": [
+    [
+      -11.007,
+      -0.31,
+      -5.007
+    ],
+    [
+      11.0,
+      5.0,
+      5.0
+    ]
+  ],
+  "embedded_textures": true,
+  "blender_available": false
+}

@@ -1,0 +1,602 @@
+/* ==================================================
+   PROJETO ARCO - FOLHA DE ESTILOS PRINCIPAL
+   ==================================================
+   Este arquivo contém todos os estilos do site. 
+   Fácil de customizar alterando as variáveis de CSS no :root.
+================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    /* Paleta de Cores do Projeto (Inspirado na Paçoquinha, areia, água e natureza) */
+    --color-pacoca: #C88A52; /* Tom principal de amendoim/paçoca */
+    --color-pacoca-dark: #A66B35;
+    --color-sand: #F5EAE0; /* Tom de areia claro */
+    --color-sand-dark: #E2D1C0;
+    --color-brown: #4A3320; /* Madeira/Terra */
+    --color-gold: #D4AF37; /* Detalhes premium */
+    --color-water: #0077BE; /* Azul da água */
+    --color-water-light: #80D0F0;
+    --color-white: #FFFFFF;
+    --color-dark: #1A1A1A;
+    --color-gray: #F0F0F0;
+
+    /* Fontes */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+
+    /* Espaçamentos */
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+
+    /* Transições */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ==================================================
+   RESET BÁSICO E TIPOGRAFIA
+================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-brown);
+    background-color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+}
+
+h1 { font-size: 4rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.8rem; }
+
+p {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==================================================
+   ESTRUTURA: NAVEGAÇÃO
+================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+    background: transparent;
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 1rem 5%;
+}
+
+header.scrolled .logo,
+header.scrolled nav ul li a {
+    color: var(--color-dark);
+}
+
+.logo {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-white);
+    letter-spacing: 2px;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+    color: var(--color-pacoca);
+}
+
+/* ==================================================
+   BOTÕES E COMPONENTES
+================================================== */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-pacoca);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-pacoca-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(200, 138, 82, 0.3);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transform: translateY(-3px);
+}
+
+.btn-outline-dark {
+    border-color: var(--color-dark);
+    color: var(--color-dark);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+section {
+    padding: var(--spacing-xl) 0;
+}
+
+/* ==================================================
+   SEÇÃO: HERO (Página Inicial)
+================================================== */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-dark);
+}
+
+/* Background Placeholder para o Hero */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.6;
+    background: linear-gradient(135deg, var(--color-brown), var(--color-pacoca-dark));
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: var(--color-white);
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    color: var(--color-white);
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards 0.5s;
+}
+
+.hero-content p.subtitle {
+    font-size: 1.5rem;
+    font-family: var(--font-secondary);
+    font-style: italic;
+    color: var(--color-sand);
+    margin-bottom: var(--spacing-md);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards 0.7s;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards 0.9s;
+}
+
+/* ==================================================
+   SEÇÃO: O CONCEITO
+================================================== */
+.conceito {
+    background-color: var(--color-sand);
+    position: relative;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.conceito-texto h2 {
+    color: var(--color-brown);
+}
+
+.conceito-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: var(--spacing-md);
+}
+
+.tag {
+    padding: 0.5rem 1.5rem;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-pacoca-dark);
+    border: 1px solid var(--color-pacoca);
+}
+
+.conceito-img {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    height: 500px;
+    background: #dcdcdc; /* Placeholder */
+}
+
+/* ==================================================
+   SEÇÃO: A CASCATA CENTRAL
+================================================== */
+.cascata {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    text-align: center;
+    position: relative;
+}
+
+.cascata h2 {
+    color: var(--color-white);
+}
+
+.cascata-destaque {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cascata-visual {
+    margin-top: 4rem;
+    height: 60vh;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(180deg, var(--color-water-light), var(--color-water)); /* Placeholder */
+    box-shadow: 0 30px 60px rgba(0,119,190,0.2);
+}
+
+/* ==================================================
+   SEÇÃO: A PRAIA
+================================================== */
+.praia {
+    background-color: var(--color-white);
+}
+
+.praia .grid-2 {
+    align-items: flex-start;
+}
+
+.praia-img {
+    height: 600px;
+    border-radius: 20px;
+    background: var(--color-sand-dark);
+}
+
+/* ==================================================
+   SEÇÃO: O PROJETO (Cards e Dimensões)
+================================================== */
+.projeto {
+    background-color: var(--color-gray);
+    text-align: center;
+}
+
+.projeto-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.card {
+    background: var(--color-white);
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition-smooth);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    font-size: 2.5rem;
+    color: var(--color-pacoca);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* ==================================================
+   SEÇÃO: EXPERIÊNCIA DO VISITANTE (Linha do tempo)
+================================================== */
+.experiencia {
+    background-color: var(--color-sand);
+    text-align: center;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.timeline-item {
+    background: var(--color-white);
+    padding: 1.5rem 3rem;
+    border-radius: 50px;
+    font-weight: 600;
+    color: var(--color-brown);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    min-width: 250px;
+}
+
+.timeline-arrow {
+    font-size: 2rem;
+    color: var(--color-pacoca);
+}
+
+/* ==================================================
+   SEÇÃO: MODELO 3D (Preparado para expansão)
+================================================== */
+.modelo-3d-section {
+    background-color: var(--color-dark);
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.modelo-3d-section h2 {
+    color: var(--color-white);
+}
+
+.modelo-3d-section p {
+    color: var(--color-sand);
+}
+
+.viewer-wrapper {
+    margin-top: 3rem;
+    width: 100%;
+    height: 70vh;
+    background-color: #000;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* Container do Model Viewer */
+#arco-model-viewer {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background-color: #1a1a1a;
+}
+
+/* Mensagens de Status / Fallback */
+.viewer-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(26, 26, 26, 0.9);
+    color: var(--color-white);
+    z-index: 10;
+    transition: opacity 0.5s ease;
+}
+
+.viewer-status.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.viewer-status h3 {
+    color: var(--color-white);
+    margin-bottom: 1rem;
+}
+
+.viewer-controls-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 20;
+    background: rgba(0,0,0,0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+}
+
+.viewer-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.viewer-btn:hover {
+    color: var(--color-pacoca);
+}
+
+/* ==================================================
+   FOOTER
+================================================== */
+footer {
+    background-color: #0a0a0a;
+    color: var(--color-white);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+footer .logo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+/* ==================================================
+   ANIMAÇÕES E UTILITÁRIOS
+================================================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================================================
+   RESPONSIVIDADE
+================================================== */
+@media (max-width: 992px) {
+    .grid-2, .projeto-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .conceito-img, .praia-img {
+        height: 400px;
+    }
+    
+    h1 { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 5%;
+    }
+    
+    nav ul {
+        display: none; /* Em um projeto real, implementar menu hamburger */
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    
+    .viewer-wrapper {
+        height: 50vh;
+    }
+}

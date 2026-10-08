@@ -1,0 +1,43 @@
+========================================
+LOG #001 — Início da Reconstrução da Maquete 3D
+Data: 2026-10-08 07:25
+========================================
+
+CONTEXTO:
+- O repositório já contém um site ARCOR com modelo GLB (exposicao-shopping.glb, 12.8MB, 75 malhas, 338k triângulos)
+- O modelo GLB já tem os 3 estandes (Paçoca do Amor, 7 Belo, Poosh!) totalmente em 3D
+- Existem modelos no Tripo3D (mascote 7 Belo, cama cryo Poosh) mas requerem login para download
+- O video "tripo showcase.mp4" mostra o modelo da Paçoca do Amor
+
+O QUE FOI FEITO (sessão anterior):
+- Criada pasta maquete/ com index.html, style.css e maquete.js
+- Problema: maquete usava geometria procedural simples + imagens estáticas (billboards)
+- O professor exige que TUDO seja 3D, sem imagens estáticas na maquete
+
+O QUE ESTÁ SENDO FEITO AGORA:
+1. Reconstruindo maquete para carregar o GLB real (exposicao-shopping.glb)
+2. Removendo todas as imagens estáticas (billboards)
+3. Adicionando espaço de shopping com entrada/saída decoradas em 3D
+4. Construindo piso de 200m² (20m x 10m) com o modelo GLB posicionado nele
+5. Adicionando elementos de shopping (paredes, teto, sinalização) em 3D procedural
+6. Criando UI interativa com rotação, zoom, click em estandes, painel de info
+
+ARQUIVOS CRIADOS/ALTERADOS:
+- maquete/index.html — página principal da maquete
+- maquete/style.css — estilos com tema dark glassmorphism
+- maquete/maquete.js — script Three.js principal (será reescrito)
+- logs/001-inicio-reconstrucao.txt — este log
+
+O QUE FAZER DEPOIS (caso outra IA continue):
+1. Verificar se o GLB carrega corretamente na maquete
+2. Ajustar iluminação para combinar com o modelo
+3. Adicionar mais detalhes ao espaço de shopping (pilares, banners, etc)
+4. Testar em dispositivos móveis
+5. Garantir que não há nenhuma imagem estática representando 3D
+6. Verificar se os controles de câmera funcionam bem
+7. Testar os cliques nos estandes e o painel de informações
+
+DEPENDÊNCIAS:
+- Three.js está em assets/vendor/ (local, sem CDN)
+- OrbitControls.js, GLTFLoader.js, RoomEnvironment.js estão disponíveis
+- O modelo GLB está em assets/models/exposicao-shopping.glb
